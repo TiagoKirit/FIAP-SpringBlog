@@ -6,6 +6,8 @@ import com.fiap.springblog.service.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class AutorServiceImpl implements AutorService {
 
@@ -20,5 +22,10 @@ public class AutorServiceImpl implements AutorService {
     @Override
     public Autor obterPorCodigo(String codigo) {
         return this.autorRepository.findById(codigo).orElseThrow(()-> new IllegalArgumentException("Autor não encontrado."));
+    }
+
+    @Override
+    public List<Autor> obterTodos() {
+        return this.autorRepository.findAll();
     }
 }

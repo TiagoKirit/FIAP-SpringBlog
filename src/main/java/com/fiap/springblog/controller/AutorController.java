@@ -5,6 +5,8 @@ import com.fiap.springblog.service.AutorService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/autores")
 public class AutorController {
@@ -12,7 +14,7 @@ public class AutorController {
     @Autowired
     private AutorService autorService;
 
-    @PostMapping
+    @PostMapping("/criar")
     public Autor criar(@RequestBody Autor autor){
         return this.autorService.criar(autor);
     }
@@ -22,5 +24,9 @@ public class AutorController {
         return this.autorService.obterPorCodigo(codigo);
     }
 
+    @GetMapping
+    public List<Autor> obterTodos(){
+        return this.autorService.obterTodos();
+    }
 
 }

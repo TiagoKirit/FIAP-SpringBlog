@@ -14,6 +14,5 @@ public class Autor {
     private String biografia;
     private String imagem;
 
-    @DBRef  //referencia de uma collection dentro da outra
-    private Autor autor;
+
 }
