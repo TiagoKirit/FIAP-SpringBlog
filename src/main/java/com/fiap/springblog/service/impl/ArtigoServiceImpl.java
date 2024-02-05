@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
+import org.springframework.data.mongodb.core.query.Update;
 import org.springframework.stereotype.Service;
 
 
@@ -74,5 +75,31 @@ public class ArtigoServiceImpl implements ArtigoService {
     public List<Artigo> findByDataAndStatus(LocalDateTime data, Integer status) {
         Query query = new Query(Criteria.where("data").is(data).and("status").is(status));
         return mongoTemplate.find(query, Artigo.class);
+    }
+
+    @Override
+    public void atualizar(Artigo artigo) {
+        this.artigoRepository.save(artigo);
+    }
+
+    @Override
+    public void atualizarArtigo(String id, String novaURL) {
+        //criterio de busca pelo ID
+        Query query = new Query(Criteria.where("codigo").is(id));
+        //definindo campos que serão atualizados
+        Update update = new Update().set("url", novaURL);
+        //exexutando atualização
+        this.mongoTemplate.updateFirst(query, update, Artigo.class);
+    }
+
+    @Override//implementação pelo JPA
+    public void deleteById(String id){
+        this.artigoRepository.deleteById(id);
+    }
+
+    @Override//implementação pelo MongoTemplate
+    public void deleteArtigoById(String id) {
+        Query query = new Query(Criteria.where("codigo").is(id));
+        mongoTemplate.remove(query, Artigo.class);
     }
 }

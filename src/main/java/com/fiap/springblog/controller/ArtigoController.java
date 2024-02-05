@@ -41,5 +41,25 @@ public class ArtigoController {
         return this.artigoService.findByDataAndStatus(data, status);
     }
 
+    @PutMapping
+    public void atualizar(@RequestBody Artigo artigo) {
+        this.artigoService.atualizar(artigo);
+    }
+
+    @PutMapping("/{id}")
+    public void atualizarArtigo(@PathVariable String id, @RequestBody String novaURL) {
+        this.artigoService.atualizarArtigo(id, novaURL);
+    }
+
+    @DeleteMapping("/{id}")
+    public void deleteById(@PathVariable String id){
+        this.artigoService.deleteById(id);
+    }
+
+    @DeleteMapping("/delete-artigo/{id}")
+    public void deleteArtigoById(@PathVariable String id){
+        this.artigoService.deleteArtigoById(id);
+    }
+
 
 }
