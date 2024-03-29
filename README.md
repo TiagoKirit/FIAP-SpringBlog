@@ -14,7 +14,7 @@ Para conseguir executar o projeto, precisamos executar o docker-compose.yml que 
 ```
 * Docker
 * Postman
-* PgAdmin (Opcional) 
+* Compass (Opcional) 
 ```
 
 ### 🔧 Instalação
