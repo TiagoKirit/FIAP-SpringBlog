@@ -29,7 +29,5 @@ Abaixo um exemplo de como ficariam os containers rodando.
 ![img.png](img.png)
 
 
-# Projeto ainda em construção...
-
 ---
 por: Tiago Kiritschenko Maffi
